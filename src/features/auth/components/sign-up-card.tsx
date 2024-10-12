@@ -61,37 +61,57 @@ export const SignUpCard = () => {
         <DottedSeparator className="py-3" />
       </div>
       <CardContent className="p-7">
-        <form className="space-y-4">
-          <Input
-            required
-            type="text"
-            value={""}
-            onChange={(e) => console.log(e.target.value)}
-            placeholder="Enter your name"
-            disabled={false}
-          />
-          <Input
-            required
-            type="email"
-            value={""}
-            onChange={(e) => console.log(e.target.value)}
-            placeholder="Enter your email"
-            disabled={false}
-          />
-          <Input
-            required
-            type="password"
-            value={""}
-            onChange={(e) => console.log(e.target.value)}
-            placeholder="Password"
-            disabled={false}
-            min={8}
-            max={256}
-          />
-          <Button disabled={false} size="lg" className="w-full">
-            Login
-          </Button>
-        </form>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              name="name"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input {...field} type="name" placeholder="Enter name" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="email"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder="Enter email address"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="password"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="Enter your password"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button disabled={false} size="lg" className="w-full">
+              Login
+            </Button>
+          </form>
+        </Form>
       </CardContent>
       <div className="px-7">
         <DottedSeparator />
