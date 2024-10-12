@@ -9,16 +9,16 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(),
+  password: z.string().min(1, "Required"),
 });
 
 export const SignInCard = () => {
@@ -61,6 +61,22 @@ export const SignInCard = () => {
                 </FormItem>
               )}
             />
+            <FormField
+              name="password"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="Enter password"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <Button disabled={false} size="lg" className="w-full">
               Login
             </Button>
@@ -89,6 +105,17 @@ export const SignInCard = () => {
           <FaGithub className="mr-2 size-5" />
           Login with GitHub
         </Button>
+      </CardContent>
+      <div className="px-7">
+        <DottedSeparator />
+      </div>
+      <CardContent className="flex items-center justify-center p-7">
+        <p className="">
+          Don&apos;t have an account?
+          <Link href="/sign-up">
+            <span className="text-blue-700">&nbsp;Sign Up</span>
+          </Link>
+        </p>
       </CardContent>
     </Card>
   );
