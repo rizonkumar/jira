@@ -108,7 +108,7 @@ export const SignUpCard = () => {
               )}
             />
             <Button disabled={false} size="lg" className="w-full">
-              Login
+              Sign up
             </Button>
           </form>
         </Form>
@@ -124,7 +124,7 @@ export const SignUpCard = () => {
           disabled={false}
         >
           <FcGoogle className="mr-2 size-5" />
-          Login with Google
+          Sign-up with Google
         </Button>
         <Button
           variant="secondary"
@@ -133,7 +133,7 @@ export const SignUpCard = () => {
           disabled={false}
         >
           <FaGithub className="mr-2 size-5" />
-          Login with GitHub
+          Sign-up with GitHub
         </Button>
       </CardContent>
       <div className="px-7">
